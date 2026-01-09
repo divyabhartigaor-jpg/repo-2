@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Animated Tables</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease-out;
+            letter-spacing: 2px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow-x: auto;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .table {
+            margin-bottom: 0;
+            border-collapse: collapse;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .table thead th {
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1.2rem;
+            border: none;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            animation: fadeIn 0.6s ease-out 0.4s backwards;
+        }
+
+        .table thead th:nth-child(1) { animation-delay: 0.4s; }
+        .table thead th:nth-child(2) { animation-delay: 0.5s; }
+        .table thead th:nth-child(3) { animation-delay: 0.6s; }
+        .table thead th:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .table tbody tr {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid #f0f0f0;
+            animation: rowSlideIn 0.6s ease-out backwards;
+        }
+
+        .table tbody tr:nth-child(1) { animation-delay: 0.8s; }
+        .table tbody tr:nth-child(2) { animation-delay: 0.9s; }
+        .table tbody tr:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes rowSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9ff;
+            transform: translateX(10px);
+            box-shadow: inset 5px 0 0 #667eea;
+        }
+
+        .table tbody td {
+            padding: 1rem 1.2rem;
+            color: #333;
+            font-weight: 500;
+            vertical-align: middle;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+        }
+
+        .table tbody th {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            font-weight: 700;
+            color: #667eea;
+            padding: 1rem 1.2rem;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+
+            h1 {
+                margin-bottom: 1.5rem;
+            }
+
+            .table thead {
+                font-size: 0.8rem;
+            }
+
+            .table tbody td,
+            .table tbody th {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+
+            .table-container {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .table {
+                font-size: 0.75rem;
+            }
+
+            .table thead th {
+                padding: 0.8rem 0.5rem;
+            }
+
+            .table tbody tr:hover {
+                transform: translateX(5px);
+            }
+
+            .table tbody td,
+            .table tbody th {
+                padding: 0.6rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>✨ User Data</h1>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>@social</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<!-- Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.
+
+ads via CarbonCheck out the latest remote job listings from the leading job board for designers, developers, and creative pros.
+ads via Carbon
+Overview 
+Due to the widespread use of <table> elements across third-party widgets like calendars and date pickers, Bootstrap’s tables are opt-in. Add the base class .table to any <table>, then extend with our optional modifier classes or custom styles. All table styles are not inherited in Bootstrap, meaning any nested tables can be styled independent from the parent.
+
+Using the most basic table markup, here’s how .table-based tables look in Bootstrap.
+
+#	First	Last	Handle
+1	Mark	Otto	@mdo
+2	Jacob	Thornton	@fat
+3	John	Doe	@social -->
+<!-- TABLES -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- IMAGE VIA BOOTSTRAP -->
+<IMG src="non veg.jpeg" alt="table1"></IMG>
+
+
+<!-- FORMS -->
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-warning">Submit</button>
+
+  <!-- BUTTONS... -->
+   <select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</form>
+</body>
+</html>
